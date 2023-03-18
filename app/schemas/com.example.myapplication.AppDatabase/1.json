@@ -1,0 +1,1414 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "4016bf6bef9ecfb8ecabcd04992e217a",
+    "entities": [
+      {
+        "tableName": "Verb",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `gerund` TEXT NOT NULL, `pastParticiple` TEXT NOT NULL, `irregular` INTEGER NOT NULL, `reflexive` INTEGER NOT NULL, `common` INTEGER NOT NULL, `englishInfinitive` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gerund",
+            "columnName": "gerund",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pastParticiple",
+            "columnName": "pastParticiple",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "irregular",
+            "columnName": "irregular",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reflexive",
+            "columnName": "reflexive",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "common",
+            "columnName": "common",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "englishInfinitive",
+            "columnName": "englishInfinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Present",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Preterite",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Future",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Conditional",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Imperfect",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PresentProgressive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PreteriteProgressive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ImperfectProgressive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ConditionalProgressive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "FutureProgressive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PresentPerfect",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PreteritePerfect",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Pluperfect",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ConditionalPerfect",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "FuturePerfect",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PresentSubjunctive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ImperfectSubjunctiveRa",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ImperfectSubjunctiveSe",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "FutureSubjunctive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PresentPerfectSubjunctive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PluperfectSubjunctive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "FuturePerfectSubjunctive",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Imperative",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "NegativeImperative",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`infinitive` TEXT NOT NULL, `yo` TEXT NOT NULL, `tu` TEXT NOT NULL, `el` TEXT NOT NULL, `nosotros` TEXT NOT NULL, `vosotros` TEXT NOT NULL, `ellos` TEXT NOT NULL, PRIMARY KEY(`infinitive`))",
+        "fields": [
+          {
+            "fieldPath": "infinitive",
+            "columnName": "infinitive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "yo",
+            "columnName": "yo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tu",
+            "columnName": "tu",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "el",
+            "columnName": "el",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nosotros",
+            "columnName": "nosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vosotros",
+            "columnName": "vosotros",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ellos",
+            "columnName": "ellos",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "infinitive"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4016bf6bef9ecfb8ecabcd04992e217a')"
+    ]
+  }
+}
