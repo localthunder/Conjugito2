@@ -171,7 +171,7 @@ fun VerbsForVerbsScreen(navController: NavController, verbs: List<Verb>) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(40.dp)
+                            .height(50.dp)
                             .background(color = MaterialTheme.colorScheme.primaryContainer)
                             .padding(horizontal = 8.dp),
                         verticalAlignment = Alignment.CenterVertically
@@ -213,7 +213,7 @@ fun VerbsForVerbsScreen(navController: NavController, verbs: List<Verb>) {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(40.dp)
+                            .height(50.dp)
                             .background(color = MaterialTheme.colorScheme.primaryContainer)
                             .padding(horizontal = 8.dp),
                         verticalAlignment = Alignment.CenterVertically

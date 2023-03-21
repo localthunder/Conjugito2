@@ -265,16 +265,16 @@ fun ExpandableTenseHeader(tense: String, isExpanded: Boolean, onClick: () -> Uni
     ListItem(modifier = Modifier
         .fillMaxWidth()
         .clickable(
-            onClickLabel = "Expand tense to show list of conjugations for this tense",
+            onClickLabel = "Expand tense to show list of conjugations for this $tense",
             onClick = onClick
         ),
         headlineText = { Text(tense) },
         trailingContent = {
             val arrowDropUp = painterResource(id = R.drawable.ic_baseline_arrow_drop_up_24)
             if (isExpanded) {
-                Icon(painter = arrowDropUp, contentDescription = "Collapse list of conjugatiosn for $tense")
+                Icon(painter = arrowDropUp, contentDescription = "Collapse list of conjugations for $tense")
             } else {
-                Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = "Expand list of conjugatiosn for $tense")
+                Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = "Expand list of conjugations for $tense")
              }
         },
         colors = if (isExpanded) {
