@@ -137,7 +137,7 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
 
     Column(modifier = Modifier
         .fillMaxWidth()
-        .padding(horizontal = 30.dp, vertical = 60.dp)
+        .padding(horizontal = 30.dp, vertical = 50.dp)
     ) {
         Box(
             modifier = Modifier
@@ -166,7 +166,7 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
             }
         }
 
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(48.dp))
 
         rowColour = when (checkedUserAnswer) {
             "unchecked" -> Color.Transparent
