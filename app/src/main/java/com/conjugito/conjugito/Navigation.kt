@@ -3,6 +3,8 @@ package com.conjugito.conjugito
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.conjugito.conjugito.entities.UserPracticeSettings
@@ -20,8 +22,16 @@ fun Navigation (listOfVerbs: List<Verb>, userPracticeSettings: UserPracticeSetti
     val context = LocalContext.current
     AnimatedNavHost(navController = navController, startDestination = "practice") {
         composable(
-            "practice"
-        ) {
+            "practice",
+            exitTransition = {
+                when (targetState.destination.route) {
+                    "verb/{infinitive}" ->
+                        fadeOut(
+                            animationSpec = tween(700)
+                        )
+                    else -> null
+                }
+            }        ) {
             PracticeScreen(
                 navController,
                 context,
@@ -34,14 +44,18 @@ fun Navigation (listOfVerbs: List<Verb>, userPracticeSettings: UserPracticeSetti
             "settings",
             enterTransition = {
                 slideInHorizontally(
-                    animationSpec = tween(500),
+                    animationSpec = tween(700),
                     initialOffsetX = { fullWidth -> fullWidth }
+                ) + fadeIn(
+                    animationSpec = tween(700)
                 )
             },
             exitTransition = {
                 slideOutHorizontally (
-                    animationSpec = tween(800),
+                    animationSpec = tween(700),
                     targetOffsetX = { fullWidth -> fullWidth }
+                ) + fadeOut(
+                    animationSpec = tween(700)
                 )
             }
         ) {
@@ -55,24 +69,39 @@ fun Navigation (listOfVerbs: List<Verb>, userPracticeSettings: UserPracticeSetti
         composable(
             "verbs",
             exitTransition = {
-                slideOutHorizontally (
-                    animationSpec = tween(800),
-                    targetOffsetX = { fullWidth -> fullWidth }
-                )
+                when (targetState.destination.route) {
+                    "practice" ->
+                        slideOutHorizontally (
+                            animationSpec = tween(1000),
+                            targetOffsetX = { fullWidth -> fullWidth }
+                        ) + fadeOut(
+                            animationSpec = tween(1000)
+                        )
+                    else -> null
+                }
             }
         ) { VerbsScreen(navController) }
         composable(
             "verb/{infinitive}",
             enterTransition = {
-                slideInHorizontally(
-                    animationSpec = tween(500),
-                    initialOffsetX = { fullWidth -> fullWidth }
-                )
+                when (initialState.destination.route) {
+                    "practice" -> fadeIn(
+                        animationSpec = tween(700),
+                    )
+                    else -> slideInHorizontally(
+                        animationSpec = tween(700),
+                        initialOffsetX = { fullWidth -> fullWidth }
+                    ) + fadeIn(
+                        animationSpec = tween(700)
+                    )
+                }
             },
             exitTransition = {
                 slideOutHorizontally (
-                    animationSpec = tween(800),
+                    animationSpec = tween(700),
                     targetOffsetX = { fullWidth -> fullWidth }
+                ) + fadeOut(
+                    animationSpec = tween(700)
                 )
             }
         ) { backStackEntry ->

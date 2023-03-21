@@ -26,6 +26,7 @@ import com.conjugito.conjugito.entities.*
 import com.conjugito.conjugito.entities.relations.VerbAndPresent
 import com.conjugito.conjugito.entities.relations.VerbAndTense
 import com.conjugito.conjugito.ui.theme.*
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -40,6 +41,7 @@ fun PracticeScreen(navController: NavController, context: Context, lifecycleCoro
     var listOfVerbs = listOfVerbs
     var userPracticeSettings: UserPracticeSettings
     var listOfTenses by remember { mutableStateOf(listOfTensesStrings) }
+    val systemUiController = rememberSystemUiController()
 
     runBlocking {
         userPracticeSettings = settingsDao.getUserPracticeSettings().first()
@@ -55,6 +57,10 @@ fun PracticeScreen(navController: NavController, context: Context, lifecycleCoro
             }
         }
     }
+
+    systemUiController.setStatusBarColor(
+        color = MaterialTheme.colorScheme.surface
+    )
 
     Scaffold(
         topBar = {
@@ -74,7 +80,7 @@ fun PracticeScreen(navController: NavController, context: Context, lifecycleCoro
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface,
-                    scrolledContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                    scrolledContainerColor = MaterialTheme.colorScheme.surface,
                     titleContentColor = MaterialTheme.colorScheme.onSurface,
                     actionIconContentColor = MaterialTheme.colorScheme.onSurface
                 ),

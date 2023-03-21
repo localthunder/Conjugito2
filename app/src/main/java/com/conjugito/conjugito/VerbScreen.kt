@@ -288,10 +288,7 @@ fun ExpandableTenseHeader(tense: String, isExpanded: Boolean, onClick: () -> Uni
         }
     )
     if(!isExpanded) {
-        Divider(
-            modifier = Modifier
-                .padding(horizontal = 18.dp)
-        )
+        Divider()
     }
 }
 
@@ -301,9 +298,9 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
     val expandTransition = remember {
         expandVertically(
             expandFrom = Alignment.Top,
-            animationSpec = tween(300)
+            animationSpec = tween(500)
         ) + fadeIn(
-            animationSpec = tween(300)
+            animationSpec = tween(500)
         )
     }
 
@@ -311,9 +308,9 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
     val collapseTransition = remember {
         shrinkVertically(
             shrinkTowards = Alignment.Top,
-            animationSpec = tween(300)
+            animationSpec = tween(500)
         ) + fadeOut(
-            animationSpec = tween(300)
+            animationSpec = tween(500)
         )
     }
 
