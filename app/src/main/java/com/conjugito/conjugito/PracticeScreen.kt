@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -119,6 +120,9 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
     var verbAndTense by remember { mutableStateOf(refreshVerb(verb, tense, lifecycleCoroutineScope, context))}
     val focusRequester = remember { FocusRequester()}
     var isTenseModalOpen by remember { mutableStateOf(false) }
+    var showMeEnabled by remember { mutableStateOf(true) }
+    var checkEnabled by remember { mutableStateOf(false) }
+
 
     if (isTenseModalOpen) {
         tenseDescriptions[tense]?.let {
@@ -139,6 +143,8 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
         .fillMaxWidth()
         .padding(horizontal = 30.dp, vertical = 50.dp)
     ) {
+        val correctAnswer = getCorrectAnswer(verbForm, verbAndTense)
+
         Box(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -171,7 +177,7 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
         rowColour = when (checkedUserAnswer) {
             "unchecked" -> Color.Transparent
             "correct" -> Green404.copy(0.19f)
-            "incorrect" -> MaterialTheme.colorScheme.errorContainer
+            "incorrect" -> MaterialTheme.colorScheme.errorContainer.copy(0.45f)
             else -> Color.Transparent
         }
         correctIcon = when (checkedUserAnswer) {
@@ -203,17 +209,26 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
             singleLine = true,
             enabled = !hideAnswerTextField,
             trailingIcon = {
-                Icon(
-                    imageVector = correctIcon,
-                    contentDescription = null,
-                    tint = when (checkedUserAnswer) {
-                        "unchecked" -> Color.Transparent
-                        "correct" -> Color.Green
-                        "incorrect" -> Color.Red
-                        else -> Color.Transparent
+                IconButton(
+                    onClick = {
+                        if (checkedUserAnswer == "incorrect"){
+                            answer = ""
+                            checkedUserAnswer = "unchecked"
+                        }
                     }
-                )
-            },
+                ) {
+                    Icon(
+                        imageVector = correctIcon,
+                        contentDescription = null,
+                        tint = when (checkedUserAnswer) {
+                            "unchecked" -> Color.Transparent
+                            "correct" -> Color.Green
+                            "incorrect" -> Color.Red
+                            else -> Color.Transparent
+                        }
+                    )
+                }
+                           },
             modifier = Modifier
                 .fillMaxWidth()
                 .focusRequester(focusRequester),
@@ -222,7 +237,45 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
                 disabledTextColor = MaterialTheme.colorScheme.onSurface,
                 unfocusedPrefixColor = MaterialTheme.colorScheme.onPrimaryContainer
             ),
-            textStyle = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
+            textStyle = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center),
+            keyboardActions = KeyboardActions(
+                onDone = {
+                    if (checkNextButtonText == "Check") {
+                        if (checkAnswer(answer, correctAnswer)) {
+                            checkedUserAnswer = "correct"
+                            answer = correctAnswer
+                            verbAndTense = refreshVerb(
+                                verb,
+                                tense,
+                                lifecycleCoroutineScope,
+                                context
+                            )
+                            checkNextButtonText = "Next"
+                            showMeEnabled = false
+                            hideAnswerTextField = true
+                            englishInfinitive = verb.englishInfinitive
+                        } else {
+                            checkedUserAnswer = "incorrect"
+                        }
+                    } else {
+                        answer = ""
+                        verb = listOfVerbs.random()
+                        verbForm = listOfVerbForms.random()
+                        tense = listOfTenses.random()
+                        verbAndTense =
+                            refreshVerb(verb, tense, lifecycleCoroutineScope, context)
+                        checkNextButtonText = "Check"
+                        showMeEnabled = true
+                        checkedUserAnswer = "unchecked"
+                        hideAnswerTextField = false
+                        englishInfinitive = ""
+                        lifecycleCoroutineScope.launch {
+                            delay(100)
+                            focusRequester.requestFocus()
+                        }
+                    }
+                }
+            )
             )
         Spacer(modifier = Modifier.height(10.dp))
 
@@ -231,10 +284,6 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            var showMeEnabled by remember { mutableStateOf(true) }
-            var checkEnabled by remember { mutableStateOf(false) }
-            val correctAnswer = getCorrectAnswer(verbForm, verbAndTense)
-
             TextButton(enabled = showMeEnabled,
                 onClick = {
                     checkNextButtonText = "Next"
