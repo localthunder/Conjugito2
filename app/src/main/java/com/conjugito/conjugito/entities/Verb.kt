@@ -48,8 +48,8 @@ val listOfTensesStrings = mutableListOf(
     "imperativeTense",
     "negativeImperativeTense",
     "presentSubjunctiveTense",
-    "imperfectSubjunctiveTenseRa",
-    "imperfectSubjunctiveTenseSe"
+    "imperfectSubjunctiveRaTense",
+    "imperfectSubjunctiveSeTense"
 )
 
 val presentTenseDescription = "Refers to actions or states that are currently happening or true in the present moment. For example, \"I am eating breakfast\" or \"She speaks Spanish.\""
@@ -65,8 +65,8 @@ val pluperfectTenseDescription = "Refers to actions or states that were complete
 val imperativeTenseDescription = "Used to give commands or make requests. It is often used in informal situations or when speaking to someone familiar. For example, \"Pass me the salt\" or \"Come here.\""
 val negativeImperativeTenseDescription = "Used to give negative commands or make negative requests. It is often used to express prohibitions or to give warnings. For example, \"Don't touch that\" or \"Don't be late.\""
 val presentSubjunctiveTenseDescription = "Used to express doubt, uncertainty, or hypothetical situations in the present. It is often used after certain verbs or expressions that indicate doubt or emotion. For example, \"It's important that he be on time\" or \"I doubt"
-val imperfectSubjunctiveRaTenseDescription = "Used to express hypothetical or contrary-to-fact situations in the past. It is formed by taking the third person plural (ellos/ellas) preterite form of the verb, dropping the -ron ending, and adding the appropriate subjunctive endings (-ra, -ras, -ra, -ramos, -rais, -ran). This tense is often used in the same situations as the imperfect subjunctive Se, but the Ra form is more common in written Spanish."
-val imperfectSubjunctiveSeTenseDescription = "Used to express hypothetical or contrary-to-fact situations in the past. It is formed by taking the third person plural (ellos/ellas) preterite form of the verb, dropping the -ron ending, and adding the appropriate subjunctive endings (-se, -ses, -se, -semos, -seis, -sen). This tense is often used after certain conjunctions (such as como si, aunque, or como) and can also express wishes, doubts, or desires. It is more commonly used in spoken Spanish than the imperfect subjunctive Ra."
+val imperfectSubjunctiveTenseRaDescription = "Used to express hypothetical or contrary-to-fact situations in the past. It is formed by taking the third person plural (ellos/ellas) preterite form of the verb, dropping the -ron ending, and adding the appropriate subjunctive endings (-ra, -ras, -ra, -ramos, -rais, -ran). This tense is often used after certain conjunctions (such as como si, aunque, or como) and can also express wishes, doubts, or desires."
+val imperfectSubjunctiveTenseSeDescription = "Used to express hypothetical or contrary-to-fact situations in the past. It is formed by taking the third person plural (ellos/ellas) preterite form of the verb, dropping the -ron ending, and adding the appropriate subjunctive endings (-se, -ses, -se, -semos, -seis, -sen). This tense is often used after certain conjunctions (such as como si, aunque, or como) and can also express wishes, doubts, or desires."
 
 
 val tenseDescriptions = mapOf(
@@ -76,15 +76,15 @@ val tenseDescriptions = mapOf(
     "imperfectTense" to imperfectTenseDescription,
     "conditionalTense" to conditionalTenseDescription,
     "presentPerfectTense" to presentPerfectTenseDescription,
-    "preteritePerfectTense" to preteriteTenseDescription,
+    "preteritePerfectTense" to preteritePerfectTenseDescription,
     "futurePerfectTense" to futurePerfectTenseDescription,
     "conditionalPerfectTense" to conditionalPerfectTenseDescription,
     "pluperfectTense" to pluperfectTenseDescription,
     "imperativeTense" to imperativeTenseDescription,
     "negativeImperativeTense" to negativeImperativeTenseDescription,
     "presentSubjunctiveTense" to presentSubjunctiveTenseDescription,
-    "imperfectSubjunctiveTenseRa" to imperfectSubjunctiveRaTenseDescription,
-    "imperfectSubjunctiveTenseSe" to imperfectSubjunctiveSeTenseDescription
+    "imperfectSubjunctiveRaTense" to imperfectSubjunctiveTenseRaDescription,
+    "imperfectSubjunctiveSeTense" to imperfectSubjunctiveTenseSeDescription
 )
 
 val abandonar = Verb("abandonar", "abandonando", "abandonado", false, false, true, "to abandon, leave behind, desert; to quit, give up")

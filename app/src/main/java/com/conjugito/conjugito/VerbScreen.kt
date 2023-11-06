@@ -113,7 +113,7 @@ fun VerbScreen (verb: Verb, navController: NavController, context: Context) {
                         .padding(horizontal = 18.dp)
                 ) {
                     ListItem(
-                        headlineText = { Text(
+                        headlineContent = { Text(
                             text = "yo",
                             style = MaterialTheme.typography.bodySmall
                         )},
@@ -123,7 +123,7 @@ fun VerbScreen (verb: Verb, navController: NavController, context: Context) {
                         )}
                     )
                     ListItem(
-                        headlineText = { Text(
+                        headlineContent = { Text(
                             text = "tu",
                             style = MaterialTheme.typography.bodySmall
                         )},
@@ -133,7 +133,7 @@ fun VerbScreen (verb: Verb, navController: NavController, context: Context) {
                         )}
                     )
                     ListItem(
-                        headlineText = { Text(
+                        headlineContent = { Text(
                             text = "el/ella/usted",
                             style = MaterialTheme.typography.bodySmall
                         )},
@@ -143,7 +143,7 @@ fun VerbScreen (verb: Verb, navController: NavController, context: Context) {
                         )}
                     )
                     ListItem(
-                        headlineText = { Text(
+                        headlineContent = { Text(
                             text = "nosotros",
                             style = MaterialTheme.typography.bodySmall
                         )},
@@ -153,7 +153,7 @@ fun VerbScreen (verb: Verb, navController: NavController, context: Context) {
                         )}
                     )
                     ListItem(
-                        headlineText = { Text(
+                        headlineContent = { Text(
                             text = "vosotros",
                             style = MaterialTheme.typography.bodySmall
                         )},
@@ -163,7 +163,7 @@ fun VerbScreen (verb: Verb, navController: NavController, context: Context) {
                         )}
                     )
                     ListItem(
-                        headlineText = { Text(
+                        headlineContent = { Text(
                             text = "ellos/ellas/ustedes",
                             style = MaterialTheme.typography.bodySmall
                         )},
@@ -268,7 +268,7 @@ fun ExpandableTenseHeader(tense: String, isExpanded: Boolean, onClick: () -> Uni
             onClickLabel = "Expand tense to show list of conjugations for this $tense",
             onClick = onClick
         ),
-        headlineText = { Text(tense) },
+        headlineContent = { Text(tense) },
         trailingContent = {
             val arrowDropUp = painterResource(id = R.drawable.ic_baseline_arrow_drop_up_24)
             if (isExpanded) {
@@ -326,7 +326,7 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
         ) {
             Column() {
                 ListItem(
-                    headlineText = { Text(
+                    headlineContent = { Text(
                         text = "yo",
                         style = MaterialTheme.typography.bodySmall
                     )},
@@ -336,7 +336,7 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
                     )}
                 )
                 ListItem(
-                    headlineText = { Text(
+                    headlineContent = { Text(
                         text = "tu",
                         style = MaterialTheme.typography.bodySmall
                     )},
@@ -346,7 +346,7 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
                     )}
                 )
                 ListItem(
-                    headlineText = { Text(
+                    headlineContent = { Text(
                         text = "el/ella/usted",
                         style = MaterialTheme.typography.bodySmall
                     )},
@@ -356,7 +356,7 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
                     )}
                 )
                 ListItem(
-                    headlineText = { Text(
+                    headlineContent = { Text(
                         text = "nosotros",
                         style = MaterialTheme.typography.bodySmall
                     )},
@@ -366,7 +366,7 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
                     )}
                 )
                 ListItem(
-                    headlineText = { Text(
+                    headlineContent = { Text(
                         text = "vosotros",
                         style = MaterialTheme.typography.bodySmall
                     )},
@@ -376,7 +376,7 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
                     )}
                 )
                 ListItem(
-                    headlineText = { Text(
+                    headlineContent = { Text(
                         text = "ellos/ellas/ustedes",
                         style = MaterialTheme.typography.bodySmall
                     )},

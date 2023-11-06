@@ -1,6 +1,7 @@
 package com.conjugito.conjugito
 
 import android.content.Context
+import android.media.MediaPlayer
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -28,9 +30,16 @@ import com.conjugito.conjugito.entities.relations.VerbAndPresent
 import com.conjugito.conjugito.entities.relations.VerbAndTense
 import com.conjugito.conjugito.ui.theme.*
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import android.content.res.AssetManager
+import com.google.android.play.core.assetpacks.AssetPackManagerFactory
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.io.File
+import java.io.FileDescriptor
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.InputStream
 import java.text.Normalizer
 import java.text.Normalizer.normalize
 
@@ -104,8 +113,27 @@ fun PracticeScreen(navController: NavController, context: Context, lifecycleCoro
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope, listOfVerbs: List<Verb>, listOfTenses: List<String>, navController: NavController) {
-    val listOfVerbForms = mutableListOf("yo", "tú", "él", "nosotros", "vosotros", "ellos")
+fun Practice    (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope, listOfVerbs: List<Verb>, listOfTenses: List<String>, navController: NavController) {
+    val listOfVerbForms = mutableListOf(
+        "yo",
+        "yo",
+        "yo",
+        "tú",
+        "tú",
+        "tú",
+        "él",
+        "ella",
+        "usted",
+        "nosotros",
+        "nosotros",
+        "nosotros",
+        "vosotros",
+        "vosotros",
+        "vosotros",
+        "ellos",
+        "ellas",
+        "ustedes"
+    )
     var verbForm by remember { mutableStateOf(listOfVerbForms.random()) }
     var englishInfinitive by remember { mutableStateOf("") }
     var rowColour by remember { mutableStateOf(Color.Transparent) }
@@ -114,15 +142,62 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
     var checkNextButtonText by remember { mutableStateOf("Check") }
     var hideAnswerTextField by remember { mutableStateOf(false) }
     var answer by remember { mutableStateOf("") }
-    var correctAnswer by remember { mutableStateOf ("")}
+    var correctAnswer by remember { mutableStateOf("") }
     var verb by remember { mutableStateOf(listOfVerbs.random()) }
     var tense by remember { mutableStateOf(listOfTenses.random()) }
-    var verbAndTense by remember { mutableStateOf(refreshVerb(verb, tense, lifecycleCoroutineScope, context))}
-    val focusRequester = remember { FocusRequester()}
+    var verbAndTense by remember {
+        mutableStateOf(
+            refreshVerb(
+                verb,
+                tense,
+                lifecycleCoroutineScope,
+                context
+            )
+        )
+    }
+    val focusRequester = remember { FocusRequester() }
     var isTenseModalOpen by remember { mutableStateOf(false) }
     var showMeEnabled by remember { mutableStateOf(true) }
     var checkEnabled by remember { mutableStateOf(false) }
 
+    fun playAudio(context: Context, audioFilePath: String) {
+        val mediaPlayer = MediaPlayer()
+        val assetManager: AssetManager = context.assets
+        try {
+            assetManager.openFd(audioFilePath).use { afd ->
+                if (mediaPlayer.isPlaying) {
+                    mediaPlayer.stop()
+                    mediaPlayer.reset()
+                }
+                mediaPlayer.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
+                mediaPlayer.prepare()
+                mediaPlayer.start()
+                mediaPlayer.setOnCompletionListener {
+                    it.release()
+                }
+            }
+        } catch (e: Exception) {
+            // Handle exceptions such as IOException or IllegalArgumentException
+            e.printStackTrace()
+        }
+    }
+
+
+    fun playAudioForInfinitive(context: Context, infinitive: String) {
+        playAudio(context, "$infinitive/$infinitive.mp3")
+    }
+
+    fun playAudioForConjugation(context: Context, infinitive: String, tense: String, verbForm: String) {
+        val formattedTense = tense.replace("Tense", "")
+            .replaceFirstChar { it.uppercaseChar() }
+        val formattedVerbForm = when (verbForm) {
+            "tú" -> "tu"
+            "él", "ella", "usted" -> "el"
+            "ellos", "ellas", "ustedes" -> "ellos"
+            else -> verbForm // or some default value if verbForm doesn't match any case
+        }
+        playAudio(context, "$infinitive/$formattedTense/$formattedVerbForm.mp3")
+    }
 
     if (isTenseModalOpen) {
         tenseDescriptions[tense]?.let {
@@ -135,13 +210,14 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
     }
 
     //Imperative tenses never have a yo form, this stops "Yo" showing for imperative tenses
-    if ((tense == "imperativeTense" || tense == "negativeImperativeTense") && verbForm == "yo"){
-        verbForm = (listOfVerbForms - "yo").random()
+    if ((tense == "imperativeTense" || tense == "negativeImperativeTense") && verbForm == "yo") {
+        verbForm = (listOfVerbForms - "yo" - "yo" - "yo").random()
     }
 
-    Column(modifier = Modifier
-        .fillMaxWidth()
-        .padding(horizontal = 30.dp, vertical = 50.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 30.dp, vertical = 50.dp)
     ) {
         val correctAnswer = getCorrectAnswer(verbForm, verbAndTense)
 
@@ -150,11 +226,25 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
                 .fillMaxWidth(),
             contentAlignment = Alignment.TopCenter
         ) {
-            Text(
-                text = verb.infinitive,
-                style = MaterialTheme.typography.displaySmall,
-                modifier = Modifier.clickable { navController.navigate("verb/${verb.infinitive}") }
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Spacer(modifier = Modifier.width(36.dp))
+
+                Text(
+                    text = verb.infinitive,
+                    style = MaterialTheme.typography.displaySmall,
+                    modifier = Modifier.clickable { navController.navigate("verb/${verb.infinitive}") }
+                )
+
+                Spacer(modifier = Modifier.width(3.dp)) // Space between text and icon
+
+                IconButton(onClick = { playAudioForInfinitive(context, verb.infinitive) }) {
+                    Icon(imageVector = Icons.AutoMirrored.Filled.VolumeUp, contentDescription = "Play Verb Sound")
+                }
+            }
+
         }
         Spacer(modifier = Modifier.height(20.dp))
         Box(
@@ -178,12 +268,14 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
             "unchecked" -> Color.Transparent
             "correct" -> Green404.copy(0.19f)
             "incorrect" -> MaterialTheme.colorScheme.errorContainer.copy(0.45f)
+            "shown" -> Color.Transparent
             else -> Color.Transparent
         }
         correctIcon = when (checkedUserAnswer) {
             "unchecked" -> Icons.Default.Clear
-            "correct" -> Icons.Default.Check
+            "correct" -> Icons.AutoMirrored.Filled.VolumeUp
             "incorrect" -> Icons.Default.Close
+            "shown" -> Icons.AutoMirrored.Filled.VolumeUp
             else -> Icons.Default.Clear
         }
         Box(
@@ -211,9 +303,15 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
             trailingIcon = {
                 IconButton(
                     onClick = {
-                        if (checkedUserAnswer == "incorrect"){
+                        if (checkedUserAnswer == "incorrect") {
                             answer = ""
                             checkedUserAnswer = "unchecked"
+                        }
+                        else if (checkedUserAnswer == "correct") {
+                            playAudioForConjugation(context, verb.infinitive, tense, verbForm)
+                        }
+                        else if (checkedUserAnswer == "shown") {
+                            playAudioForConjugation(context, verb.infinitive, tense, verbForm)
                         }
                     }
                 ) {
@@ -222,13 +320,14 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
                         contentDescription = null,
                         tint = when (checkedUserAnswer) {
                             "unchecked" -> Color.Transparent
-                            "correct" -> Color.Green
+                            "correct" -> MaterialTheme.colorScheme.onSurface
                             "incorrect" -> Color.Red
+                            "shown" -> MaterialTheme.colorScheme.onSurface
                             else -> Color.Transparent
                         }
                     )
                 }
-                           },
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .focusRequester(focusRequester),
@@ -237,7 +336,14 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
                 disabledTextColor = MaterialTheme.colorScheme.onSurface,
                 unfocusedPrefixColor = MaterialTheme.colorScheme.onPrimaryContainer
             ),
-            textStyle = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center),
+            textStyle = when (tense) {
+                "presentPerfectTense" -> MaterialTheme.typography.titleMedium.copy(textAlign = TextAlign.Center)
+                "preteritePerfectTense" -> MaterialTheme.typography.titleMedium.copy(textAlign = TextAlign.Center)
+                "futurePerfectTense" -> MaterialTheme.typography.titleMedium.copy(textAlign = TextAlign.Center)
+                "conditionalPerfectTense" -> MaterialTheme.typography.titleMedium.copy(textAlign = TextAlign.Center)
+                "pluperfectTense" -> MaterialTheme.typography.titleMedium.copy(textAlign = TextAlign.Center)
+                else -> MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
+            },
             keyboardActions = KeyboardActions(
                 onDone = {
                     if (checkNextButtonText == "Check") {
@@ -274,9 +380,10 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
                             focusRequester.requestFocus()
                         }
                     }
+
                 }
             )
-            )
+        )
         Spacer(modifier = Modifier.height(10.dp))
 
         Row(
@@ -287,7 +394,7 @@ fun Practice (context: Context, lifecycleCoroutineScope: LifecycleCoroutineScope
             TextButton(enabled = showMeEnabled,
                 onClick = {
                     checkNextButtonText = "Next"
-                    checkedUserAnswer = "unchecked"
+                    checkedUserAnswer = "shown"
                     hideAnswerTextField = true
                     showMeEnabled = false
                     verbAndTense =
@@ -352,16 +459,23 @@ fun CharSequence.unaccent(): String {
 }
 
 fun checkAnswer(answer: String, correctAnswer: String): Boolean {
-    return answer.unaccent() == correctAnswer.unaccent()
+    val cleanedAnswer = answer.trim().lowercase().unaccent()
+    val cleanedCorrectAnswer = correctAnswer.unaccent()
+
+    return cleanedAnswer == cleanedCorrectAnswer
 }
 
 fun getCorrectAnswer(verbForm: String, verbAndTense: VerbAndTense): String = when (verbForm) {
     "yo" -> verbAndTense.yo
     "tú" -> verbAndTense.tu
     "él" -> verbAndTense.el
+    "ella" -> verbAndTense.el
+    "usted" -> verbAndTense.el
     "nosotros" -> verbAndTense.nosotros
     "vosotros" -> verbAndTense.vosotros
     "ellos" -> verbAndTense.ellos
+    "ellas" -> verbAndTense.ellos
+    "ustedes" -> verbAndTense.ellos
     else -> throw IllegalArgumentException("Invalid verb form")
 }
 
@@ -420,9 +534,9 @@ fun TensePill(tense: String, onTensePillClicked: () -> Unit, large: Boolean) {
     }
     val tensePillModifier = if (large) {
         Modifier
-            .padding(horizontal = 24.dp, vertical = 12.dp)
+            .padding(horizontal = 18.dp, vertical = 12.dp)
             .background(tensePillColour, RoundedCornerShape(48.dp))
-            .padding(horizontal = 24.dp, vertical = 6.dp)
+            .padding(horizontal = 18.dp, vertical = 6.dp)
     } else {
         Modifier
             .padding(horizontal = 8.dp, vertical = 4.dp)
@@ -435,63 +549,66 @@ fun TensePill(tense: String, onTensePillClicked: () -> Unit, large: Boolean) {
                 onClick = { onTensePillClicked() }
             )
     ) {
-        when (tense) {
-            "presentTense" -> Text(
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            when (tense) {
+                "presentTense" -> Text(
                 text = "Present",
                 color = if (isDarkMode) Present90 else Present10,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "preteriteTense" -> Text(
+                )
+                "preteriteTense" -> Text(
                 text = "Preterite",
                 color = if (isDarkMode) Preterite90 else Preterite10,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "futureTense" -> Text(
+                )
+                "futureTense" -> Text(
                 text = "Future",
                 color = if (isDarkMode) Future90 else Future10,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "imperfectTense" -> Text(
+                )
+                "imperfectTense" -> Text(
                 text = "Imperfect",
                 color = if (isDarkMode) Imperfect90 else Imperfect10,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "conditionalTense" -> Text(
+                )
+                "conditionalTense" -> Text(
                 text = "Conditional",
                 color = if (isDarkMode) Conditional90 else Conditional10,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "presentPerfectTense" -> Text(
+                )
+                "presentPerfectTense" -> Text(
                 text = "Present Perfect",
                 color = if (isDarkMode) PresentPerfect90 else PresentPerfect10,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "preteritePerfectTense" -> Text(
+                )
+                "preteritePerfectTense" -> Text(
                 text = "Preterite Perfect",
                 color = if (isDarkMode) Preterite20 else Preterite100,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "futurePerfectTense" -> Text(
+                )
+                "futurePerfectTense" -> Text(
                 text = "Future Perfect",
                 color = if (isDarkMode) Future20 else Future100,
-                style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "conditionalPerfectTense" -> Text(
+                    style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
+                )
+                "conditionalPerfectTense" -> Text(
                 text = "Conditional Perfect",
                 color = if (isDarkMode) Conditional20 else Conditional100,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "pluperfectTense" -> Text(
+                )
+                "pluperfectTense" -> Text(
                 text = "Pluperfect",
                 color = if (isDarkMode) Pluperfect90 else Pluperfect10,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "imperativeTense" -> Text(
+                )
+                "imperativeTense" -> Text(
                 text = "Imperative",
                 color = if (isDarkMode) Imperative90 else Imperative10,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
-            )
-            "negativeImperativeTense" -> Text(
+                )
+                "negativeImperativeTense" -> Text(
                 text = "Negative Imperative",
                 color = if (isDarkMode) NegativeImperative90 else NegativeImperative10,
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
@@ -512,6 +629,34 @@ fun TensePill(tense: String, onTensePillClicked: () -> Unit, large: Boolean) {
                 style = if (large) MaterialTheme.typography.titleLarge else MaterialTheme.typography.labelMedium
             )
             else -> "Error"
+        }
+            if(!large) {
+                Icon(
+                    imageVector = Icons.Default.Info,
+                    modifier = Modifier
+                        .padding(horizontal = 2.dp)
+                        .size(10.dp),
+                    contentDescription = "info",
+                    tint = when (tense) {
+                        "presentTense" -> if (isDarkMode) Present90 else Present10
+                        "preteriteTense" -> if (isDarkMode) Preterite90 else Preterite10
+                        "futureTense" -> if (isDarkMode) Future90 else Future10
+                        "imperfectTense" -> if (isDarkMode) Imperfect90 else Imperfect10
+                        "conditionalTense" -> if (isDarkMode) Conditional90 else Conditional10
+                        "presentPerfectTense" -> if (isDarkMode) PresentPerfect90 else PresentPerfect10
+                        "preteritePerfectTense" -> if (isDarkMode) Preterite20 else Preterite100
+                        "futurePerfectTense" -> if (isDarkMode) Future20 else Future100
+                        "conditionalPerfectTense" -> if (isDarkMode) Conditional20 else Conditional100
+                        "pluperfectTense" -> if (isDarkMode) Pluperfect90 else Pluperfect10
+                        "imperativeTense" -> if (isDarkMode) Imperative90 else Imperative10
+                        "negativeImperativeTense" -> if (isDarkMode) NegativeImperative90 else NegativeImperative10
+                        "presentSubjunctiveTense" -> if (isDarkMode) Present20 else Present100
+                        "imperfectSubjunctiveRaTense" -> if (isDarkMode) Future20 else Future100
+                        "imperfectSubjunctiveSeTense" -> if (isDarkMode) Conditional20 else Conditional100
+                        else -> Green404
+                    }
+                )
+            }
         }
     }
 }
