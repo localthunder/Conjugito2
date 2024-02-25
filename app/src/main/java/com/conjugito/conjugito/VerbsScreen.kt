@@ -136,11 +136,16 @@ fun VerbScreenSearchBar(){
 @Composable
 fun VerbsForVerbsScreen(navController: NavController, verbs: List<Verb>) {
     val groupedVerbs = verbs.groupBy { it.common }
-    val commonVerbs = groupedVerbs[true].orEmpty().sortedBy { it.infinitive }
-    val uncommonVerbs = groupedVerbs[false].orEmpty().sortedBy { it.infinitive }
+    val commonVerbs by remember(verbs) {
+        mutableStateOf(groupedVerbs[true].orEmpty().sortedBy { it.infinitive })
+    }
+    val uncommonVerbs by remember(verbs) {
+        mutableStateOf(groupedVerbs[false].orEmpty().sortedBy { it.infinitive })
+    }
+
 
     //Empty state for search
-    if (commonVerbs.isEmpty() && uncommonVerbs.isEmpty()) {
+    if (groupedVerbs[true].isNullOrEmpty() && groupedVerbs[false].isNullOrEmpty()) {
         Box(
             modifier = Modifier
                 .fillMaxHeight(0.5f)
