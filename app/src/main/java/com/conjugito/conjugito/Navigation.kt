@@ -45,7 +45,7 @@ fun Navigation (listOfVerbs: List<Verb>, userPracticeSettings: UserPracticeSetti
             enterTransition = {
                 slideInHorizontally(
                     animationSpec = tween(700),
-                    initialOffsetX = { fullWidth -> fullWidth }
+                    initialOffsetX = { fullWidth: Int -> fullWidth }
                 ) + fadeIn(
                     animationSpec = tween(700)
                 )
@@ -53,7 +53,7 @@ fun Navigation (listOfVerbs: List<Verb>, userPracticeSettings: UserPracticeSetti
             exitTransition = {
                 slideOutHorizontally (
                     animationSpec = tween(700),
-                    targetOffsetX = { fullWidth -> fullWidth }
+                    targetOffsetX = { fullWidth: Int -> fullWidth }
                 ) + fadeOut(
                     animationSpec = tween(700)
                 )
@@ -73,7 +73,7 @@ fun Navigation (listOfVerbs: List<Verb>, userPracticeSettings: UserPracticeSetti
                     "practice" ->
                         slideOutHorizontally (
                             animationSpec = tween(1000),
-                            targetOffsetX = { fullWidth -> fullWidth }
+                            targetOffsetX = { fullWidth: Int -> fullWidth }
                         ) + fadeOut(
                             animationSpec = tween(1000)
                         )
@@ -90,7 +90,7 @@ fun Navigation (listOfVerbs: List<Verb>, userPracticeSettings: UserPracticeSetti
                     )
                     else -> slideInHorizontally(
                         animationSpec = tween(700),
-                        initialOffsetX = { fullWidth -> fullWidth }
+                        initialOffsetX = { fullWidth: Int -> fullWidth }
                     ) + fadeIn(
                         animationSpec = tween(700)
                     )
@@ -99,7 +99,7 @@ fun Navigation (listOfVerbs: List<Verb>, userPracticeSettings: UserPracticeSetti
             exitTransition = {
                 slideOutHorizontally (
                     animationSpec = tween(700),
-                    targetOffsetX = { fullWidth -> fullWidth }
+                    targetOffsetX = { fullWidth: Int -> fullWidth }
                 ) + fadeOut(
                     animationSpec = tween(700)
                 )

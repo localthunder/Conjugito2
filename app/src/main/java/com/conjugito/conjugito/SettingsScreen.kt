@@ -102,7 +102,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 }
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Reflexive verbs")},
+                    headlineContent = {Text("Reflexive verbs")},
                     trailingContent =
                     {
                         Switch(
@@ -130,7 +130,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Uncommon verbs")},
+                    headlineContent = {Text("Uncommon verbs")},
                     trailingContent =
                     {
                         Switch(
@@ -170,7 +170,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 }
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = { Text("Present tense")},
+                    headlineContent = { Text("Present tense")},
                     trailingContent =
                     {
                         Switch(
@@ -203,7 +203,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Preterite tense")},
+                    headlineContent = {Text("Preterite tense")},
                     trailingContent =
                     {
                         Switch(
@@ -231,7 +231,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Future tense")},
+                    headlineContent = {Text("Future tense")},
                     trailingContent =
                     {
                         Switch(
@@ -259,7 +259,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Imperfect tense")},
+                    headlineContent = {Text("Imperfect tense")},
                     trailingContent =
                     {
                         Switch(
@@ -287,7 +287,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Conditional tense")},
+                    headlineContent = {Text("Conditional tense")},
                     trailingContent =
                     {
                         Switch(
@@ -315,7 +315,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Present perfect tense")},
+                    headlineContent = {Text("Present perfect tense")},
                     trailingContent =
                     {
                         Switch(
@@ -343,7 +343,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Preterite perfect tense")},
+                    headlineContent = {Text("Preterite perfect tense")},
                     trailingContent =
                     {
                         Switch(
@@ -371,7 +371,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Future perfect tense")},
+                    headlineContent = {Text("Future perfect tense")},
                     trailingContent =
                     {
                         Switch(
@@ -399,7 +399,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Conditional perfect tense")},
+                    headlineContent = {Text("Conditional perfect tense")},
                     trailingContent =
                     {
                         Switch(
@@ -427,7 +427,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Pluperfect tense")},
+                    headlineContent = {Text("Pluperfect tense")},
                     trailingContent =
                     {
                         Switch(
@@ -467,7 +467,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 }
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Present subjunctive tense")},
+                    headlineContent = {Text("Present subjunctive tense")},
                     trailingContent =
                     {
                         Switch(
@@ -495,7 +495,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Imperfect subjunctive tense (Ra)")},
+                    headlineContent = {Text("Imperfect subjunctive tense (Ra)")},
                     trailingContent =
                     {
                         Switch(
@@ -523,7 +523,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Imperfect Subjunctive tense (Se)")},
+                    headlineContent = {Text("Imperfect Subjunctive tense (Se)")},
                     trailingContent =
                     {
                         Switch(
@@ -563,7 +563,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 }
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Imperative tense")},
+                    headlineContent = {Text("Imperative tense")},
                     trailingContent =
                     {
                         Switch(
@@ -591,7 +591,7 @@ fun SettingsScreen (navController: NavController, context: Context, lifecycleCor
                 )
                 ListItem(
                     modifier = Modifier.fillMaxWidth(),
-                    headlineText = {Text("Negative Imperative tense")},
+                    headlineContent = {Text("Negative Imperative tense")},
                     trailingContent =
                     {
                         Switch(

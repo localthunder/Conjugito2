@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -56,10 +58,6 @@ class VerbScreenViewModel : ViewModel(){
     fun onSearchTextChange(text: String){
         _searchText.value = text
     }
-
-    fun onIsSearchActiveChange(boolean: Boolean){
-        _isSearching.value = boolean
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -76,7 +74,7 @@ fun VerbsScreen(navController: NavController) {
                 } else {
                     Text("Verbs")
                 }
-                        },
+                },
                 modifier = Modifier,
                 navigationIcon = {
                     if(!isSearchActive){
@@ -85,17 +83,10 @@ fun VerbsScreen(navController: NavController) {
                                 navController.navigate("practice")
                             }
                         ) {
-                            Icon(Icons.Default.ArrowBack, contentDescription = "Back arrow")
+                            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back arrow")
                         }
                     }
                 },
-//                actions = {
-//                    IconButton(onClick = {
-//                        viewModel.onIsSearchActiveChange(true)
-//                    }) {
-//                        Icon(Icons.Default.Search, contentDescription = "Search")
-//                    }
-//                },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface,
                     scrolledContainerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -107,17 +98,17 @@ fun VerbsScreen(navController: NavController) {
         },
         content = { innerPadding ->
             WindowInsets.navigationBars.asPaddingValues()
-                Column(
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(innerPadding)
-                ) {
-                    VerbScreenSearchBar()
-                    VerbsForVerbsScreen(navController = navController, verbs = verbs)
-                }
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(innerPadding)
+            ) {
+                VerbScreenSearchBar()
+                VerbsForVerbsScreen(navController = navController, verbs = verbs)
             }
+        }
     )
 }
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
@@ -191,7 +182,7 @@ fun VerbsForVerbsScreen(navController: NavController, verbs: List<Verb>) {
                         modifier = Modifier.noRippleClickable(
                             onClick = { navController.navigate("verb/${verb.infinitive}") }
                         ),
-                        headlineText = { Text(verb.infinitive) },
+                        headlineContent = { Text(verb.infinitive) },
                         trailingContent = {
                             val regex = Regex("[,;\\[]")
                             Row(
@@ -200,7 +191,7 @@ fun VerbsForVerbsScreen(navController: NavController, verbs: List<Verb>) {
                             ) {
                                 Text(verb.englishInfinitive.split(regex).first())
                                 Icon(
-                                    Icons.Default.KeyboardArrowRight,
+                                    Icons.AutoMirrored.Filled.KeyboardArrowRight,
                                     contentDescription = "Right arrow"
                                 )
                             }
@@ -233,7 +224,7 @@ fun VerbsForVerbsScreen(navController: NavController, verbs: List<Verb>) {
                         modifier = Modifier.noRippleClickable(
                             onClick = { navController.navigate("verb/${verb.infinitive}") }
                         ),
-                        headlineText = { Text(verb.infinitive) },
+                        headlineContent = { Text(verb.infinitive) },
                         trailingContent = {
                             val regex = Regex("[,;\\[]")
                             Row(
@@ -242,7 +233,7 @@ fun VerbsForVerbsScreen(navController: NavController, verbs: List<Verb>) {
                             ) {
                                 Text(verb.englishInfinitive.split(regex).first())
                                 Icon(
-                                    Icons.Default.KeyboardArrowRight,
+                                    Icons.AutoMirrored.Filled.KeyboardArrowRight,
                                     contentDescription = "Right arrow"
                                 )
                             }
