@@ -124,7 +124,7 @@ fun VerbScreen (verb: Verb, navController: NavController, context: Context) {
                     )
                     ListItem(
                         headlineContent = { Text(
-                            text = "tu",
+                            text = "tú",
                             style = MaterialTheme.typography.bodySmall
                         )},
                         trailingContent = { Text(
@@ -134,7 +134,7 @@ fun VerbScreen (verb: Verb, navController: NavController, context: Context) {
                     )
                     ListItem(
                         headlineContent = { Text(
-                            text = "el/ella/usted",
+                            text = "él/ella/usted",
                             style = MaterialTheme.typography.bodySmall
                         )},
                         trailingContent = { Text(
@@ -337,7 +337,7 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
                 )
                 ListItem(
                     headlineContent = { Text(
-                        text = "tu",
+                        text = "tú",
                         style = MaterialTheme.typography.bodySmall
                     )},
                     trailingContent = {Text(
@@ -347,7 +347,7 @@ fun ExpandableListOfConjugations(verbAndTense: VerbAndTense, isExpanded: Boolean
                 )
                 ListItem(
                     headlineContent = { Text(
-                        text = "el/ella/usted",
+                        text = "él/ella/usted",
                         style = MaterialTheme.typography.bodySmall
                     )},
                     trailingContent = {Text(

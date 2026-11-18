@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- Play Store feature graphic. Render at 1024x500. -->
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=block" rel="stylesheet">
+<style>
+  :root { --yellow: #ffcc00; --blue: #00318d; }
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1024px; height: 500px; overflow: hidden; }
+  body {
+    font-family: "Bricolage Grotesque", sans-serif; background: var(--blue); color: #fff;
+    display: flex; align-items: center; gap: 56px; padding: 0 80px;
+  }
+  .icon { width: 260px; height: 260px; border-radius: 60px; flex: none; box-shadow: 0 24px 50px rgba(0,0,0,.35); }
+  h1 { color: var(--yellow); font-weight: 800; font-size: 104px; letter-spacing: -3px; line-height: 1; }
+  p { font-weight: 500; font-size: 38px; margin-top: 12px; line-height: 1.2; }
+  .chips { display: flex; gap: 12px; margin-top: 30px; }
+  .chip { padding: 8px 20px; border-radius: 999px; font-weight: 800; font-size: 26px; }
+</style>
+</head>
+<body>
+  <img class="icon" src="icon.png">
+  <div>
+    <h1>Hablito</h1>
+    <p>Spanish verb conjugation practice</p>
+    <div class="chips">
+      <span class="chip" style="background:#81f8d0;color:#00382a">tengo</span>
+      <span class="chip" style="background:#cce5ff;color:#001d36">tuve</span>
+      <span class="chip" style="background:#ffd7ef;color:#3b0030">tendré</span>
+      <span class="chip" style="background:#f9d8ff;color:#30004a">tendría</span>
+    </div>
+  </div>
+</body>
+</html>
